@@ -1,5 +1,7 @@
 # neovim config
 
+Solo per NVIM >= 0.12 (in questo momento `nightly`).
+
 ## Combinazione tasti con Meta
 
 La combinazione dei tasti con Meta `<M->` non funziona sul mac sostituirla con Command `<D->`.
