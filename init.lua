@@ -23,6 +23,7 @@ vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename, { desc = "LSP Rename" })
 vim.keymap.set({ 'n', 'v', 'x' }, '<leader>y', '"+y<CR>', { desc = "Yank on clipboard" })
 vim.keymap.set({ 'n', 'v', 'x' }, '<leader>d', '"+d<CR>', { desc = "Cut on clipboard" })
 vim.keymap.set('n', '<leader>bb', '<CMD>b#<CR>', { desc = "Previously opened buffer" })
+vim.keymap.set('n', '<leader>bd', '<CMD>bdelete<CR>', { desc = "Close current buffer" })
 vim.keymap.set('n', '<C-TAB>', '<CMD>b#<CR>', { desc = "Previously opened buffer" })
 vim.keymap.set('n', '<leader>gg', '<CMD>LazyGit<CR>', { desc = "Lazygit" })
 
