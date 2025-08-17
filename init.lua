@@ -35,6 +35,8 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
 	{ src = "https://github.com/folke/which-key.nvim" },
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
+	{ src = "https://github.com/ms-jpq/coq_nvim" },
+	{ src = "https://github.com/ms-jpq/coq.artifacts" },
 	-- colorscheme
 	{ src = "https://github.com/EdenEast/nightfox.nvim" },
 })
