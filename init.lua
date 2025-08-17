@@ -88,6 +88,7 @@ require("which-key").setup({
 		{ "<leader>l", group = "lsp" },
 		{ "<leader>c", group = "code" },
 		{ "<leader>b", group = "buffers" },
+		{ "<leader>g", group = "git" },
 		{ "]q",        desc = "Next quickfix" },
 		{ "[q",        desc = "Previous quickfix" },
 	}
