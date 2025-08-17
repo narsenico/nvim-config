@@ -35,21 +35,21 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
 	{ src = "https://github.com/folke/which-key.nvim" },
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
-	{ src = "https://github.com/ms-jpq/coq_nvim" },
-	{ src = "https://github.com/ms-jpq/coq.artifacts" },
+	{ src = "https://github.com/Saghen/blink.cmp", version = "1.6.0" },
 	-- colorscheme
 	{ src = "https://github.com/EdenEast/nightfox.nvim" },
 })
 
-vim.api.nvim_create_autocmd('LspAttach', {
-	callback = function(ev)
-		local client = vim.lsp.get_client_by_id(ev.data.client_id)
-		if client:supports_method('textDocument/completion') then
-			vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-		end
-	end,
-})
-vim.cmd("set completeopt+=noselect")
+-- replaced by blink.cmp
+-- vim.api.nvim_create_autocmd('LspAttach', {
+-- 	callback = function(ev)
+-- 		local client = vim.lsp.get_client_by_id(ev.data.client_id)
+-- 		if client:supports_method('textDocument/completion') then
+-- 			vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+-- 		end
+-- 	end,
+-- })
+-- vim.cmd("set completeopt+=noselect")
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
@@ -60,6 +60,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 require("mason").setup()
 -- automatically enable all lsp loaded with mason
 -- no need vim.lsp.enable({ "lua_ls", ... })
+vim.lsp.config("lua_ls", {
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = { "vim" } }
+		}
+	}
+})
 require("mason-lspconfig").setup()
 require("nvim-treesitter.configs").setup({
 	highlight = { enable = true }
@@ -91,5 +99,19 @@ vim.keymap.set('n', '<leader>fb', '<CMD>Pick buffers<CR>', { desc = "Pick buffer
 vim.keymap.set('n', '<leader>ft', '<CMD>Pick grep_live<CR>', { desc = "Pick grep" })
 require('mini.icons').setup()
 require('gitsigns').setup()
+
+require('blink.cmp').setup({
+	keymap = {
+		preset = 'super-tab',
+	},
+	appearance = {
+      nerd_font_variant = 'mono'
+    },
+	completion = { documentation = { auto_show = true } },
+	sources = {
+      default = { 'lsp', 'path', 'snippets', 'buffer' },
+    },
+	fuzzy = { implementation = "lua" }
+})
 
 vim.cmd("colorscheme dawnfox")
