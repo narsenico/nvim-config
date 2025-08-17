@@ -39,6 +39,7 @@ vim.pack.add({
 	{ src = "https://github.com/Saghen/blink.cmp", version = "1.6.0" },
 	{ src = "https://github.com/prettier/vim-prettier" },
 	{ src = "https://github.com/kdheepak/lazygit.nvim" },
+	{ src = "https://github.com/akinsho/bufferline.nvim" },
 	-- colorscheme
 	{ src = "https://github.com/EdenEast/nightfox.nvim" },
 })
@@ -115,5 +116,6 @@ require('blink.cmp').setup({
 	},
 	fuzzy = { implementation = "lua" }
 })
+require('bufferline').setup()
 
 vim.cmd("colorscheme dawnfox")
