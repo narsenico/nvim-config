@@ -94,6 +94,7 @@ require("which-key").setup({
 require('mini.pick').setup({
 	mappings = {
 		-- choose_marked     = '<M-CR>', NOT WORKING ON MAC
+		-- <C-x> mark item
 		choose_marked = '<D-CR>', -- cmd+enter on mac
 	}
 })
