@@ -102,18 +102,17 @@ vim.keymap.set('n', '<leader>fb', '<CMD>Pick buffers<CR>', { desc = "Pick buffer
 vim.keymap.set('n', '<leader>ft', '<CMD>Pick grep_live<CR>', { desc = "Pick grep" })
 require('mini.icons').setup()
 require('gitsigns').setup()
-
 require('blink.cmp').setup({
 	keymap = {
 		preset = 'super-tab',
 	},
 	appearance = {
-      nerd_font_variant = 'mono'
-    },
+		nerd_font_variant = 'mono'
+	},
 	completion = { documentation = { auto_show = true } },
 	sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer' },
-    },
+		default = { 'lsp', 'path', 'snippets', 'buffer' },
+	},
 	fuzzy = { implementation = "lua" }
 })
 
