@@ -28,6 +28,8 @@ vim.keymap.set('n', '<leader>bb', '<CMD>b#<CR>', { desc = "Previously opened buf
 vim.keymap.set('n', '<leader>bd', '<CMD>bdelete<CR>', { desc = "Close current buffer" })
 vim.keymap.set('n', '<C-TAB>', '<CMD>b#<CR>', { desc = "Previously opened buffer" })
 vim.keymap.set('n', '<leader>gg', '<CMD>LazyGit<CR>', { desc = "Lazygit" })
+vim.keymap.set('n', '<S-h>', '<CMD>bprevious<CR>', { desc = "Previous Buffer" })
+vim.keymap.set('n', '<S-l>', '<CMD>bnext<CR>', { desc = "Next Buffer" })
 
 vim.pack.add({
 	{ src = "https://github.com/stevearc/oil.nvim" },
