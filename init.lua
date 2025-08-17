@@ -24,6 +24,7 @@ vim.keymap.set({ 'n', 'v', 'x' }, '<leader>y', '"+y<CR>', { desc = "Yank on clip
 vim.keymap.set({ 'n', 'v', 'x' }, '<leader>d', '"+d<CR>', { desc = "Cut on clipboard" })
 vim.keymap.set('n', '<leader>bb', '<CMD>b#<CR>', { desc = "Previously opened buffer" })
 vim.keymap.set('n', '<C-TAB>', '<CMD>b#<CR>', { desc = "Previously opened buffer" })
+vim.keymap.set('n', '<leader>gg', '<CMD>LazyGit<CR>', { desc = "Lazygit" })
 
 vim.pack.add({
 	{ src = "https://github.com/stevearc/oil.nvim" },
@@ -36,6 +37,7 @@ vim.pack.add({
 	{ src = "https://github.com/folke/which-key.nvim" },
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
 	{ src = "https://github.com/Saghen/blink.cmp", version = "1.6.0" },
+	{ src = "https://github.com/kdheepak/lazygit.nvim" },
 	-- colorscheme
 	{ src = "https://github.com/EdenEast/nightfox.nvim" },
 })
