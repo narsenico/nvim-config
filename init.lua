@@ -52,6 +52,7 @@ vim.pack.add({
 	{ src = "https://github.com/kdheepak/lazygit.nvim" },
 	{ src = "https://github.com/akinsho/bufferline.nvim" },
 	{ src = "https://github.com/ibhagwan/fzf-lua" },
+	{ src = "https://github.com/nvim-lualine/lualine.nvim" },
 	-- colorscheme
 	{ src = "https://github.com/EdenEast/nightfox.nvim" },
 })
@@ -120,5 +121,12 @@ require('blink.cmp').setup({
 })
 require('bufferline').setup()
 require('fzf-lua').setup()
+require('lualine').setup({
+	options = {
+		-- theme = 'everforest',
+		theme = 'codedark',
+		section_separators = '', component_separators = ''
+	}
+})
 
 vim.cmd("colorscheme duskfox")
