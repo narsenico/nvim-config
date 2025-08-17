@@ -18,7 +18,7 @@ vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format, { desc = "LSP Format" })
 vim.keymap.set('n', '<leader>lr', vim.lsp.buf.references, { desc = "LSP References" })
 vim.keymap.set('n', '<leader>ls', vim.lsp.buf.document_symbol, { desc = "LSP SDocument Symbols" })
 vim.keymap.set('n', '<leader>ld', vim.lsp.buf.definition, { desc = "LSP Definition" })
-vim.keymap.set('n', '<leader>lD', vim.diagnostic.open_float, { desc = "LSP Open Diagnostic" })
+vim.keymap.set('n', '<leader>lD', '<CMD>FzfLua diagnostics_document<CR>', { desc = "LSP Open Diagnostic" })
 vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename, { desc = "LSP Rename" })
 vim.keymap.set('n', '<leader>co', '<CMD>copen<CR>', { desc = "Open quickfix" })
 vim.keymap.set('n', '<leader>cq', '<CMD>cclose<CR>', { desc = "Close quickfix" })
@@ -28,14 +28,19 @@ vim.keymap.set('n', '<leader>bb', '<CMD>b#<CR>', { desc = "Previously opened buf
 vim.keymap.set('n', '<leader>bd', '<CMD>bdelete<CR>', { desc = "Close current buffer" })
 vim.keymap.set('n', '<C-TAB>', '<CMD>b#<CR>', { desc = "Previously opened buffer" })
 vim.keymap.set('n', '<leader>gg', '<CMD>LazyGit<CR>', { desc = "Lazygit" })
+vim.keymap.set('n', '<leader>gc', '<CMD>FzfLua git_commits<CR>', { desc = "Git Commits" })
+vim.keymap.set('n', '<leader>gC', '<CMD>FzfLua git_bcommits<CR>', { desc = "Git Buffer Commits" })
+vim.keymap.set('n', '<leader>gb', '<CMD>FzfLua git_blame<CR>', { desc = "Git Blame" })
 vim.keymap.set('n', '<S-h>', '<CMD>bprevious<CR>', { desc = "Previous Buffer" })
 vim.keymap.set('n', '<S-l>', '<CMD>bnext<CR>', { desc = "Next Buffer" })
+vim.keymap.set('n', '<leader>ff', '<CMD>FzfLua files', { desc = "Find files" })
+vim.keymap.set('n', '<leader><leader>', '<CMD>FzfLua files<CR>', { desc = "Find files" })
+vim.keymap.set('n', '<leader>fb', '<CMD>FzfLua buffers<CR>', { desc = "Find buffers" })
+vim.keymap.set('n', '<leader>fc', '<CMD>FzfLua changes<CR>', { desc = "Find changes" })
 
 vim.pack.add({
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
-	{ src = "https://github.com/echasnovski/mini.pick" },
-	{ src = "https://github.com/echasnovski/mini.icons" },
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
@@ -46,6 +51,7 @@ vim.pack.add({
 	{ src = "https://github.com/prettier/vim-prettier" },
 	{ src = "https://github.com/kdheepak/lazygit.nvim" },
 	{ src = "https://github.com/akinsho/bufferline.nvim" },
+	{ src = "https://github.com/ibhagwan/fzf-lua" },
 	-- colorscheme
 	{ src = "https://github.com/EdenEast/nightfox.nvim" },
 })
@@ -98,18 +104,6 @@ require("which-key").setup({
 		{ "[q",        desc = "Previous quickfix" },
 	}
 })
-require('mini.pick').setup({
-	mappings = {
-		-- choose_marked     = '<M-CR>', NOT WORKING ON MAC
-		-- <C-x> mark item
-		choose_marked = '<D-CR>', -- cmd+enter on mac
-	}
-})
-vim.keymap.set('n', '<leader>ff', '<CMD>Pick files<CR>', { desc = "Pick files" })
-vim.keymap.set('n', '<leader><leader>', '<CMD>Pick files<CR>', { desc = "Pick files" })
-vim.keymap.set('n', '<leader>fb', '<CMD>Pick buffers<CR>', { desc = "Pick buffers" })
-vim.keymap.set('n', '<leader>ft', '<CMD>Pick grep_live<CR>', { desc = "Pick grep" })
-require('mini.icons').setup()
 require('gitsigns').setup()
 require('blink.cmp').setup({
 	keymap = {
@@ -125,5 +119,6 @@ require('blink.cmp').setup({
 	fuzzy = { implementation = "lua" }
 })
 require('bufferline').setup()
+require('fzf-lua').setup()
 
-vim.cmd("colorscheme dawnfox")
+vim.cmd("colorscheme duskfox")
