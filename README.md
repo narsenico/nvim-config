@@ -15,13 +15,3 @@ require('mini.pick').setup({
 		choose_marked = '<D-CR>', -- cmd+enter on mac
 	}
 ```
-
-## COQ (autocomplete)
-
-La prima volta occorre lanciare `:COQdeps` che installerà tutte le dipendenze (attenzione, anche eseguibili di terze parti).
-
-Per abilitarlo 
-
-```vim
-:COQnow [--shut-up]
-```
