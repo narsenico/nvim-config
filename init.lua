@@ -1,3 +1,22 @@
+vim.pack.add({
+	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
+	{ src = "https://github.com/stevearc/oil.nvim" },
+	{ src = "https://github.com/neovim/nvim-lspconfig" },
+	{ src = "https://github.com/mason-org/mason.nvim" },
+	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+	{ src = "https://github.com/folke/which-key.nvim" },
+	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
+	{ src = "https://github.com/Saghen/blink.cmp", version = "1.6.0" },
+	{ src = "https://github.com/prettier/vim-prettier" },
+	{ src = "https://github.com/kdheepak/lazygit.nvim" },
+	{ src = "https://github.com/akinsho/bufferline.nvim" },
+	{ src = "https://github.com/ibhagwan/fzf-lua" },
+	{ src = "https://github.com/nvim-lualine/lualine.nvim" },
+	-- colorscheme
+	{ src = "https://github.com/EdenEast/nightfox.nvim" },
+})
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = "auto:4"
@@ -37,36 +56,6 @@ vim.keymap.set('n', '<leader>ff', '<CMD>FzfLua files', { desc = "Find files" })
 vim.keymap.set('n', '<leader><leader>', '<CMD>FzfLua files<CR>', { desc = "Find files" })
 vim.keymap.set('n', '<leader>fb', '<CMD>FzfLua buffers<CR>', { desc = "Find buffers" })
 vim.keymap.set('n', '<leader>fc', '<CMD>FzfLua changes<CR>', { desc = "Find changes" })
-
-vim.pack.add({
-	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
-	{ src = "https://github.com/stevearc/oil.nvim" },
-	{ src = "https://github.com/neovim/nvim-lspconfig" },
-	{ src = "https://github.com/mason-org/mason.nvim" },
-	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
-	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
-	{ src = "https://github.com/folke/which-key.nvim" },
-	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
-	{ src = "https://github.com/Saghen/blink.cmp", version = "1.6.0" },
-	{ src = "https://github.com/prettier/vim-prettier" },
-	{ src = "https://github.com/kdheepak/lazygit.nvim" },
-	{ src = "https://github.com/akinsho/bufferline.nvim" },
-	{ src = "https://github.com/ibhagwan/fzf-lua" },
-	{ src = "https://github.com/nvim-lualine/lualine.nvim" },
-	-- colorscheme
-	{ src = "https://github.com/EdenEast/nightfox.nvim" },
-})
-
--- replaced by blink.cmp
--- vim.api.nvim_create_autocmd('LspAttach', {
--- 	callback = function(ev)
--- 		local client = vim.lsp.get_client_by_id(ev.data.client_id)
--- 		if client:supports_method('textDocument/completion') then
--- 			vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
--- 		end
--- 	end,
--- })
--- vim.cmd("set completeopt+=noselect")
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
