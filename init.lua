@@ -7,7 +7,7 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
 	{ src = "https://github.com/folke/which-key.nvim" },
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
-	{ src = "https://github.com/Saghen/blink.cmp", version = "1.6.0" },
+	{ src = "https://github.com/Saghen/blink.cmp", version = "v1.6.0" },
 	{ src = "https://github.com/prettier/vim-prettier" },
 	{ src = "https://github.com/kdheepak/lazygit.nvim" },
 	{ src = "https://github.com/akinsho/bufferline.nvim" },
