@@ -15,3 +15,9 @@ require('mini.pick').setup({
 		choose_marked = '<D-CR>', -- cmd+enter on mac
 	}
 ```
+
+## Normal mode in windows
+
+Si possono usare i caratteri di controllo in `:norm` usando la sequenza `Ctrl+q` (al posto di `Ctrl+V`) + carattere.
+
+Ad esempio per _escape_ `Ctrl+q` e poi premere `Escape`.
