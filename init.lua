@@ -8,7 +8,7 @@ vim.pack.add({
 	{ src = "https://github.com/folke/which-key.nvim" },
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
 	{ src = "https://github.com/Saghen/blink.cmp", version = "v1.6.0" },
-	{ src = "https://github.com/prettier/vim-prettier" },
+	{ src = "https://github.com/stevearc/conform.nvim" },
 	{ src = "https://github.com/kdheepak/lazygit.nvim" },
 	{ src = "https://github.com/akinsho/bufferline.nvim" },
 	{ src = "https://github.com/ibhagwan/fzf-lua" },
@@ -33,7 +33,7 @@ vim.keymap.set('n', '<leader>q', '<CMD>quit<CR>', { desc = "Quit" })
 vim.keymap.set('n', '<leader>w', '<CMD>write<CR>', { desc = "Save" })
 vim.keymap.set('n', '<C-s>', '<CMD>write<CR>', { desc = "Save" })
 vim.keymap.set('n', '<esc>', '<CMD>noh<CR>')
-vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format, { desc = "LSP Format" })
+vim.keymap.set('n', '<leader>lf', require('conform').format, { desc = "LSP Format" })
 vim.keymap.set('n', '<leader>lr', vim.lsp.buf.references, { desc = "LSP References" })
 vim.keymap.set('n', '<leader>ls', vim.lsp.buf.document_symbol, { desc = "LSP SDocument Symbols" })
 vim.keymap.set('n', '<leader>ld', vim.lsp.buf.definition, { desc = "LSP Definition" })
@@ -116,6 +116,20 @@ require('lualine').setup({
 		theme = 'codedark',
 		section_separators = '', component_separators = ''
 	}
+})
+require('conform').setup({
+	formatters_by_ft = {
+		javascript = { "prettier", stop_after_first = true },
+		typescript = { "prettier", stop_after_first = true },
+		typescriptreact = { "prettier", stop_after_first = true },
+		json = { "prettier", stop_after_first = true },
+		html = { "prettier", stop_after_first = true },
+		css = { "prettier", stop_after_first = true },
+	},
+	format_on_save = {
+		timeout_ms = 500,
+		lsp_format = "fallback",
+	},
 })
 
 vim.cmd("colorscheme duskfox")
