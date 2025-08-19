@@ -58,6 +58,7 @@ vim.keymap.set('n', '<leader><leader>', '<CMD>FzfLua files<CR>', { desc = "Find 
 vim.keymap.set('n', '<leader>fb', '<CMD>FzfLua buffers<CR>', { desc = "Find buffers" })
 vim.keymap.set('n', '<leader>fc', '<CMD>FzfLua changes<CR>', { desc = "Find changes" })
 vim.keymap.set('n', '<leader>ft', '<CMD>FzfLua live_grep<CR>', { desc = "Find text (grep)" })
+vim.keymap.set('n', '<leader>e', '<CMD>Oil --float<CR>', { desc = "Explorer" })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
@@ -80,10 +81,7 @@ require("mason-lspconfig").setup()
 require("nvim-treesitter.configs").setup({
 	highlight = { enable = true }
 })
--- file explorer
-require("oil").setup({
-	vim.keymap.set('n', '<leader>e', '<CMD>Oil --float<CR>', { desc = "Explorer" }),
-})
+require("oil").setup()
 -- key mapping description
 require("which-key").setup({
 	spec = {
@@ -116,7 +114,8 @@ require('lualine').setup({
 	options = {
 		-- theme = 'everforest',
 		theme = 'codedark',
-		section_separators = '', component_separators = ''
+		section_separators = '',
+		component_separators = ''
 	}
 })
 require('conform').setup({
