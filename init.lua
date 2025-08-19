@@ -7,7 +7,7 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
 	{ src = "https://github.com/folke/which-key.nvim" },
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
-	{ src = "https://github.com/Saghen/blink.cmp", version = "v1.6.0" },
+	{ src = "https://github.com/Saghen/blink.cmp",               version = "v1.6.0" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
 	{ src = "https://github.com/kdheepak/lazygit.nvim" },
 	{ src = "https://github.com/akinsho/bufferline.nvim" },
@@ -35,9 +35,10 @@ vim.keymap.set('n', '<C-s>', '<CMD>write<CR>', { desc = "Save" })
 vim.keymap.set('n', '<esc>', '<CMD>noh<CR>')
 vim.keymap.set('n', '<leader>lf', require('conform').format, { desc = "LSP Format" })
 vim.keymap.set('n', '<leader>lr', vim.lsp.buf.references, { desc = "LSP References" })
-vim.keymap.set('n', '<leader>ls', vim.lsp.buf.document_symbol, { desc = "LSP SDocument Symbols" })
-vim.keymap.set('n', '<leader>ld', vim.lsp.buf.definition, { desc = "LSP Definition" })
-vim.keymap.set('n', '<leader>lD', '<CMD>FzfLua diagnostics_document<CR>', { desc = "LSP Open Diagnostic" })
+vim.keymap.set('n', '<leader>ls', '<CMD>FzfLua lsp_document_symbols<CR>', { desc = "LSP Document Symbols" })
+vim.keymap.set('n', '<leader>lS', '<CMD>FzfLua lsp_live_workspace_symbols<CR>', { desc = "LSP Workspace Symbols" })
+vim.keymap.set('n', '<leader>ld', '<CMD>FzfLua diagnostics_document<CR>', { desc = "LSP Document Diagnostics" })
+vim.keymap.set('n', '<leader>lD', '<CMD>FzfLua diagnostics_workspace<CR>', { desc = "LSP Workspace Diagnostics" })
 vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename, { desc = "LSP Rename" })
 vim.keymap.set('n', '<leader>co', '<CMD>copen<CR>', { desc = "Open quickfix" })
 vim.keymap.set('n', '<leader>cq', '<CMD>cclose<CR>', { desc = "Close quickfix" })
@@ -56,6 +57,7 @@ vim.keymap.set('n', '<leader>ff', '<CMD>FzfLua files', { desc = "Find files" })
 vim.keymap.set('n', '<leader><leader>', '<CMD>FzfLua files<CR>', { desc = "Find files" })
 vim.keymap.set('n', '<leader>fb', '<CMD>FzfLua buffers<CR>', { desc = "Find buffers" })
 vim.keymap.set('n', '<leader>fc', '<CMD>FzfLua changes<CR>', { desc = "Find changes" })
+vim.keymap.set('n', '<leader>ft', '<CMD>FzfLua live_grep<CR>', { desc = "Find text (grep)" })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
