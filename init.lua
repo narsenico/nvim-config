@@ -3,6 +3,14 @@ function showConfigFiles()
 	require('fzf-lua').files({ cwd = cwd, winopts = { title = "Config" } })
 end
 
+function loadSession()
+	require('persistence').load()
+end
+
+function selectSession()
+	require('persistence').select()
+end
+
 vim.pack.add({
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
@@ -20,6 +28,7 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-lualine/lualine.nvim" },
 	{ src = "https://github.com/windwp/nvim-autopairs" },
 	{ src = "https://github.com/tpope/vim-sleuth" },
+	{ src = "https://github.com/folke/persistence.nvim" },
 	-- colorscheme
 	{ src = "https://github.com/EdenEast/nightfox.nvim" },
 })
@@ -41,6 +50,8 @@ vim.opt.scrolloff = 5
 vim.g.mapleader = " "
 
 vim.keymap.set('n', '<leader>so', '<CMD>update<CR> <CMD>source<CR>', { desc = "Source config" })
+vim.keymap.set('n', '<leader>sl', loadSession, { desc = "Load session" })
+vim.keymap.set('n', '<leader>ss', selectSession, { desc = "Select session" })
 vim.keymap.set('n', '<leader>q', '<CMD>quit<CR>', { desc = "Quit" })
 vim.keymap.set('n', '<leader>w', '<CMD>write<CR>', { desc = "Save" })
 vim.keymap.set('n', '<C-s>', '<CMD>write<CR>', { desc = "Save" })
@@ -151,5 +162,6 @@ require('conform').setup({
 	},
 })
 require('nvim-autopairs').setup()
+require('persistence').setup()
 
 vim.cmd("colorscheme duskfox")
