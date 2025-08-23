@@ -33,6 +33,8 @@ vim.opt.winborder = "rounded"
 vim.opt.smartcase = true
 vim.opt.ignorecase = true
 vim.opt.undofile = true
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 vim.g.mapleader = " "
 
