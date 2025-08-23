@@ -13,6 +13,7 @@ vim.pack.add({
 	{ src = "https://github.com/akinsho/bufferline.nvim" },
 	{ src = "https://github.com/ibhagwan/fzf-lua" },
 	{ src = "https://github.com/nvim-lualine/lualine.nvim" },
+	{ src = "https://github.com/windwp/nvim-autopairs" },
 	-- colorscheme
 	{ src = "https://github.com/EdenEast/nightfox.nvim" },
 })
@@ -132,5 +133,6 @@ require('conform').setup({
 		lsp_format = "fallback",
 	},
 })
+require('nvim-autopairs').setup()
 
 vim.cmd("colorscheme duskfox")
