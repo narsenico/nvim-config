@@ -1,3 +1,8 @@
+function showConfigFiles()
+	local cwd = vim.fn.stdpath('config')
+	require('fzf-lua').files({ cwd = cwd, winopts = { title = "Config" } })
+end
+
 vim.pack.add({
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
@@ -60,6 +65,7 @@ vim.keymap.set('n', '<leader><leader>', '<CMD>FzfLua files<CR>', { desc = "Find 
 vim.keymap.set('n', '<leader>fb', '<CMD>FzfLua buffers<CR>', { desc = "Find buffers" })
 vim.keymap.set('n', '<leader>fc', '<CMD>FzfLua changes<CR>', { desc = "Find changes" })
 vim.keymap.set('n', '<leader>ft', '<CMD>FzfLua live_grep<CR>', { desc = "Find text (grep)" })
+vim.keymap.set('n', '<leader>fC', showConfigFiles, { desc = "Find config files" })
 vim.keymap.set('n', '<leader>e', '<CMD>Oil --float<CR>', { desc = "Explorer" })
 
 vim.api.nvim_create_autocmd("TextYankPost", {
