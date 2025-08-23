@@ -32,6 +32,7 @@ vim.opt.shiftwidth = 4
 vim.opt.winborder = "rounded"
 vim.opt.smartcase = true
 vim.opt.ignorecase = true
+vim.opt.undofile = true
 
 vim.g.mapleader = " "
 
