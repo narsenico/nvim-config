@@ -35,6 +35,7 @@ vim.opt.ignorecase = true
 vim.opt.undofile = true
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.inccommand = 'split'
 vim.opt.scrolloff = 5
 
 vim.g.mapleader = " "
