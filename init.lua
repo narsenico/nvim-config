@@ -69,6 +69,10 @@ vim.keymap.set('n', '<leader>ft', '<CMD>FzfLua live_grep<CR>', { desc = "Find te
 vim.keymap.set('n', '<leader>fC', showConfigFiles, { desc = "Find config files" })
 vim.keymap.set('n', '<leader>e', '<CMD>Oil --float<CR>', { desc = "Explorer" })
 
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "LSP Definition" })
+vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, { desc = "LSP Implementation" })
+vim.keymap.set('n', 'gr', '<CMD>FzfLua lsp_references<CR>', { desc = "LSP References", nowait = true })
+
 vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
 		vim.highlight.on_yank()
