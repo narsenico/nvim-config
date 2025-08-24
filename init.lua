@@ -1,3 +1,5 @@
+local DEFAULT_SCROLLOFF = 5
+
 function showConfigFiles()
 	local cwd = vim.fn.stdpath('config')
 	require('fzf-lua').files({ cwd = cwd, winopts = { title = "Config" } })
@@ -9,6 +11,15 @@ end
 
 function selectSession()
 	require('persistence').select()
+end
+
+function toggleLockCursorOnScreenMiddle()
+	if vim.o.scrolloff == 999 then
+		vim.o.scrolloff = DEFAULT_SCROLLOFF
+	else
+		vim.o.scrolloff = 999
+	end
+	print('scrolloff=' .. vim.o.scrolloff)
 end
 
 vim.pack.add({
@@ -45,7 +56,7 @@ vim.opt.undofile = true
 vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.inccommand = 'split'
-vim.opt.scrolloff = 5
+vim.opt.scrolloff = DEFAULT_SCROLLOFF
 
 vim.g.mapleader = " "
 
@@ -87,6 +98,7 @@ vim.keymap.set('n', '<leader>fc', '<CMD>FzfLua changes<CR>', { desc = "Find chan
 vim.keymap.set('n', '<leader>ft', '<CMD>FzfLua live_grep<CR>', { desc = "Find text (grep)" })
 vim.keymap.set('n', '<leader>fC', showConfigFiles, { desc = "Find config files" })
 vim.keymap.set('n', '<leader>e', '<CMD>Oil --float<CR>', { desc = "Explorer" })
+vim.keymap.set('n', '<leader>zm', toggleLockCursorOnScreenMiddle, { desc = "Toggle lock cursor on middle of the screen" })
 
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "LSP Definition" })
 vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, { desc = "LSP Implementation" })
