@@ -1,19 +1,19 @@
 local DEFAULT_SCROLLOFF = 5
 
-function showConfigFiles()
+local showConfigFiles = function()
 	local cwd = vim.fn.stdpath("config")
 	require("fzf-lua").files({ cwd = cwd, winopts = { title = "Config" } })
 end
 
-function loadSession()
+local loadSession = function()
 	require("persistence").load()
 end
 
-function selectSession()
+local selectSession = function()
 	require("persistence").select()
 end
 
-function toggleLockCursorOnScreenMiddle()
+local toggleLockCursorOnScreenMiddle = function()
 	if vim.o.scrolloff == 999 then
 		vim.o.scrolloff = DEFAULT_SCROLLOFF
 	else
@@ -22,21 +22,21 @@ function toggleLockCursorOnScreenMiddle()
 	print("scrolloff=" .. vim.o.scrolloff)
 end
 
-function format()
+local format = function()
 	require("conform").format({ async = true })
 end
 
-function copyFilePathToSystemClipboard()
+local copyFilePathToSystemClipboard = function()
 	local path = vim.fn.expand("%:p")
 	vim.fn.setreg("+", path)
 end
 
-function copyFileDirectoryToSystemClipboard()
+local copyFileDirectoryToSystemClipboard = function()
 	local path = vim.fn.expand("%:p:h")
 	vim.fn.setreg("+", path)
 end
 
-function removeUnusedImports()
+local removeUnusedImports = function()
 	vim.lsp.buf.code_action({
 		context = {
 			only = { "source.removeUnused" },
@@ -45,7 +45,7 @@ function removeUnusedImports()
 	})
 end
 
-function addMissingImports()
+local addMissingImports = function()
 	vim.lsp.buf.code_action({
 		context = {
 			only = { "source.addMissingImports" },
@@ -94,6 +94,8 @@ vim.opt.inccommand = "split"
 vim.opt.scrolloff = DEFAULT_SCROLLOFF
 
 vim.g.mapleader = " "
+
+vim.diagnostic.config({ virtual_lines = true })
 
 vim.keymap.set("n", "<leader>so", "<CMD>update<CR> <CMD>source<CR>", { desc = "Source config" })
 vim.keymap.set("n", "<leader>sl", loadSession, { desc = "Load session" })
@@ -266,7 +268,7 @@ require("kanagawa").setup({
 	-- INFO: this is an info
 	-- FIX: this is a fix
 	-- FIXME: this is a fixme
-	overrides = function(colors)
+	overrides = function()
 		return {
 			-- INFO: use :Inspect to see what type highlight group is under the cursor
 			Comment = { fg = "#bababa" },
