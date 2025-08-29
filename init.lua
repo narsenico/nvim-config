@@ -144,6 +144,8 @@ vim.lsp.config("lua_ls", {
 	}
 })
 require("mason-lspconfig").setup()
+-- INFO: remember to install parser for language manually
+-- :TSInstall <language> (eg :TSInstall typescript)
 require("nvim-treesitter.configs").setup({
 	highlight = { enable = true },
 	incremental_selection = {

@@ -21,3 +21,17 @@ require('mini.pick').setup({
 Si possono usare i caratteri di controllo in `:norm` usando la sequenza `Ctrl+q` (al posto di `Ctrl+V`) + carattere.
 
 Ad esempio per _escape_ `Ctrl+q` e poi premere `Escape`.
+
+## Treesitter
+
+Per attivare tutte le funzionalità di `Treesitter` occorre installare il parser del linguaggio deiderato a mano.
+
+Ad esempio per `typescript` digitare
+
+```
+:TSInstall typescript
+```
+
+Con il comando `:TSModuleInfo` vengono elencati tutti i moduli installati.
+
+Un altro comando utile è `:Inspect` (uguale a `vim.show_pos()`) che mostra le informazioni sul token dove è posizionato il cursore.
