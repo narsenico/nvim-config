@@ -54,6 +54,7 @@ vim.pack.add({
 	{ src = "https://github.com/windwp/nvim-autopairs" },
 	{ src = "https://github.com/tpope/vim-sleuth" },
 	{ src = "https://github.com/folke/persistence.nvim" },
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects" },
 	-- colorscheme
 	{ src = "https://github.com/EdenEast/nightfox.nvim" },
 })
@@ -142,7 +143,32 @@ vim.lsp.config("lua_ls", {
 })
 require("mason-lspconfig").setup()
 require("nvim-treesitter.configs").setup({
-	highlight = { enable = true }
+	highlight = { enable = true },
+	incremental_selection = {
+		enable = true,
+		keymaps = {
+			init_selection = "<Tab>", -- set to `false` to disable one of the mappings
+			node_incremental = "<Tab>",
+			scope_incremental = false,
+			node_decremental = "<S-Tab>",
+		},
+	},
+	textobjects = {
+		select = {
+			enable = true,
+			lookahead = true,
+			keymaps = {
+				["af"] = "@function.outer",
+				["if"] = "@function.inner",
+			},
+			selection_modes = {
+				['@parameter.outer'] = 'v', -- charwise
+				['@function.outer'] = 'V', -- linewise
+				['@class.outer'] = '<c-v>', -- blockwise
+			},
+			include_surrounding_whitespace = true,
+		}
+	}
 })
 require("oil").setup()
 -- key mapping description
