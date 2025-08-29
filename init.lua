@@ -55,6 +55,7 @@ vim.pack.add({
 	{ src = "https://github.com/tpope/vim-sleuth" },
 	{ src = "https://github.com/folke/persistence.nvim" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects" },
+	{ src = "https://github.com/j-hui/fidget.nvim" },
 	-- colorscheme
 	{ src = "https://github.com/EdenEast/nightfox.nvim" },
 	{ src = "https://github.com/rebelot/kanagawa.nvim" },
@@ -128,6 +129,7 @@ vim.keymap.set(
 	copyFileDirectoryToSystemClipboard,
 	{ desc = "Copy file parent directory to system clipboard" }
 )
+-- FIXME: start funziona solo windows!!!
 vim.keymap.set("n", "<leader>xxf", "<cmd>execute '!start %'<cr>", { desc = "Open file" })
 vim.keymap.set("n", "<leader>xxd", "<cmd>execute '!start %:p:h'<cr>", { desc = "Open directory" })
 
@@ -141,6 +143,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+require("fidget").setup()
 require("mason").setup()
 -- automatically enable all lsp loaded with mason
 -- no need vim.lsp.enable({ "lua_ls", ... })
