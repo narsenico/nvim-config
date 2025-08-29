@@ -90,6 +90,7 @@ vim.keymap.set('n', '<leader>ld', '<CMD>FzfLua diagnostics_document<CR>', { desc
 vim.keymap.set('n', '<leader>lD', '<CMD>FzfLua diagnostics_workspace<CR>', { desc = "LSP Workspace Diagnostics" })
 vim.keymap.set({ 'n', 'v' }, "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Code Action" })
 vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename, { desc = "LSP Rename" })
+vim.keymap.set('n', '<leader>cd', vim.diagnostic.open_float, { desc = "Swho Diagnostics under cursor" })
 vim.keymap.set('n', '<leader>co', '<CMD>copen<CR>', { desc = "Open quickfix" })
 vim.keymap.set('n', '<leader>cq', '<CMD>cclose<CR>', { desc = "Close quickfix" })
 vim.keymap.set({ 'n', 'v', 'x' }, '<leader>y', '"+y<CR>', { desc = "Yank on clipboard" })
