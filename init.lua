@@ -36,6 +36,15 @@ function copyFileDirectoryToSystemClipboard()
 	vim.fn.setreg("+", path)
 end
 
+function removeUnusedImports()
+	vim.lsp.buf.code_action({
+		context = {
+			only = { "source.removeUnused" },
+		},
+		apply = true,
+	})
+end
+
 vim.pack.add({
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
@@ -91,6 +100,7 @@ vim.keymap.set("n", "<leader>lS", "<CMD>FzfLua lsp_live_workspace_symbols<CR>", 
 vim.keymap.set("n", "<leader>ld", "<CMD>FzfLua diagnostics_document<CR>", { desc = "LSP Document Diagnostics" })
 vim.keymap.set("n", "<leader>lD", "<CMD>FzfLua diagnostics_workspace<CR>", { desc = "LSP Workspace Diagnostics" })
 vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Code Action" })
+vim.keymap.set({ "n", "v" }, "<leader>cu", removeUnusedImports, { desc = "LSP Remove Unused Imports" })
 vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "LSP Rename" })
 vim.keymap.set("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Swho Diagnostics under cursor" })
 vim.keymap.set("n", "<leader>co", "<CMD>copen<CR>", { desc = "Open quickfix" })
