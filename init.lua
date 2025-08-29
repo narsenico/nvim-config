@@ -209,12 +209,12 @@ require('lualine').setup({
 })
 require('conform').setup({
 	formatters_by_ft = {
-		javascript = { "prettier", stop_after_first = true },
-		typescript = { "prettier", stop_after_first = true },
-		typescriptreact = { "prettier", stop_after_first = true },
-		json = { "prettier", stop_after_first = true },
-		html = { "prettier", stop_after_first = true },
-		css = { "prettier", stop_after_first = true },
+		javascript = { "prettierd", stop_after_first = true },
+		typescript = { "prettierd", stop_after_first = true },
+		typescriptreact = { "prettierd", stop_after_first = true },
+		json = { "prettierd", stop_after_first = true },
+		html = { "prettierd", stop_after_first = true },
+		css = { "prettierd", stop_after_first = true },
 	},
 	format_on_save = {
 		timeout_ms = 1000,
