@@ -144,6 +144,8 @@ vim.keymap.set(
 	toggleLockCursorOnScreenMiddle,
 	{ desc = "Toggle lock cursor on middle of the screen" }
 )
+vim.keymap.set("n", "<leader>zs", "<CMD>setlocal spell spelllang=en,it<CR>", { desc = "Enable spell checking (en,it)" })
+vim.keymap.set("n", "<leader>zS", "<CMD>setlocal nospell<CR>", { desc = "Disable spell checking" })
 vim.keymap.set("n", "<leader>xyf", copyFilePathToSystemClipboard, { desc = "Copy file path to system clipboard" })
 vim.keymap.set(
 	"n",
