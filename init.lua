@@ -111,7 +111,7 @@ vim.keymap.set('n', '<leader>fb', '<CMD>FzfLua buffers<CR>', { desc = "Find buff
 vim.keymap.set('n', '<leader>fc', '<CMD>FzfLua changes<CR>', { desc = "Find changes" })
 vim.keymap.set('n', '<leader>ft', '<CMD>FzfLua live_grep<CR>', { desc = "Find text (grep)" })
 vim.keymap.set('n', '<leader>fC', showConfigFiles, { desc = "Find config files" })
-vim.keymap.set('n', '<leader>e', '<CMD>Oil --float<CR>', { desc = "Explorer" })
+vim.keymap.set('n', '<leader>e', '<CMD>Oil<CR>', { desc = "Explorer" })
 vim.keymap.set('n', '<leader>zm', toggleLockCursorOnScreenMiddle, { desc = "Toggle lock cursor on middle of the screen" })
 vim.keymap.set('n', '<leader>xyf', copyFilePathToSystemClipboard, { desc = "Copy file path to system clipboard" })
 vim.keymap.set('n', '<leader>xyd', copyFileDirectoryToSystemClipboard,
