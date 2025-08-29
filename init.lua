@@ -116,6 +116,8 @@ vim.keymap.set('n', '<leader>zm', toggleLockCursorOnScreenMiddle, { desc = "Togg
 vim.keymap.set('n', '<leader>xyf', copyFilePathToSystemClipboard, { desc = "Copy file path to system clipboard" })
 vim.keymap.set('n', '<leader>xyd', copyFileDirectoryToSystemClipboard,
 	{ desc = "Copy file parent directory to system clipboard" })
+vim.keymap.set('n', '<leader>xxf', "<cmd>execute '!start %'<cr>", { desc = "Open file" })
+vim.keymap.set('n', '<leader>xxd', "<cmd>execute '!start %:p:h'<cr>", { desc = "Open directory" })
 
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "LSP Definition" })
 vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, { desc = "LSP Implementation" })
