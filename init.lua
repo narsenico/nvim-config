@@ -22,6 +22,10 @@ function toggleLockCursorOnScreenMiddle()
 	print('scrolloff=' .. vim.o.scrolloff)
 end
 
+function format()
+	require('conform').format({ async = true })
+end
+
 vim.pack.add({
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
@@ -67,7 +71,7 @@ vim.keymap.set('n', '<leader>q', '<CMD>quit<CR>', { desc = "Quit" })
 vim.keymap.set('n', '<leader>w', '<CMD>write<CR>', { desc = "Save" })
 vim.keymap.set('n', '<C-s>', '<CMD>write<CR>', { desc = "Save" })
 vim.keymap.set('n', '<esc>', '<CMD>noh<CR>')
-vim.keymap.set('n', '<leader>lf', require('conform').format, { desc = "LSP Format" })
+vim.keymap.set('n', '<leader>lf', format, { desc = "LSP Format" })
 vim.keymap.set('n', '<leader>lr', vim.lsp.buf.references, { desc = "LSP References" })
 vim.keymap.set('n', '<leader>ls', '<CMD>FzfLua lsp_document_symbols<CR>', { desc = "LSP Document Symbols" })
 vim.keymap.set('n', '<leader>lS', '<CMD>FzfLua lsp_live_workspace_symbols<CR>', { desc = "LSP Workspace Symbols" })
