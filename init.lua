@@ -57,6 +57,7 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects" },
 	-- colorscheme
 	{ src = "https://github.com/EdenEast/nightfox.nvim" },
+	{ src = "https://github.com/rebelot/kanagawa.nvim" },
 })
 
 vim.opt.number = true
@@ -224,5 +225,18 @@ require('conform').setup({
 })
 require('nvim-autopairs').setup()
 require('persistence').setup()
+require('kanagawa').setup({
+	-- TODO: this is a todo
+	-- INFO: this is an info
+	-- FIX: this is a fix
+	-- FIXME: this is a fixme
+	overrides = function(colors)
+		return {
+			-- INFO: use :Inspect to see what type highlight group is under the cursor
+			Comment = { fg = "#bababa" },
+		}
+	end,
+})
 
-vim.cmd("colorscheme duskfox")
+-- vim.cmd("colorscheme duskfox")
+vim.cmd("colorscheme kanagawa")
