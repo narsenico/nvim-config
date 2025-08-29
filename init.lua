@@ -217,7 +217,7 @@ require('conform').setup({
 		html = { "prettierd", stop_after_first = true },
 		css = { "prettierd", stop_after_first = true },
 	},
-	format_on_save = {
+	format_after_save = {
 		timeout_ms = 1000,
 		lsp_format = "fallback",
 	},
