@@ -1,3 +1,5 @@
+SCRATCH_DATA_PATH = vim.fs.joinpath(vim.fn.stdpath("data"), "scratch")
+
 local openScratch = function(opts)
 	opts = vim.tbl_extend("keep", opts or {}, { auto_save = true })
 
@@ -60,31 +62,29 @@ local findProjectFolder = function(path)
 	})
 
 	if res[1] then
-		return vim.fs.dirname(res[1])
+		local projectPath = vim.fs.dirname(res[1])
+		if projectPath == "." then
+			projectPath = vim.fn.getcwd(0)
+		end
+		return projectPath
 	end
 
 	return nil
 end
 
-FOLDER_NAME = "myscratch"
-
 vim.api.nvim_create_user_command("Scratch", function()
 	-- FIX: verificare che funzioni anche su altri OS (come windows)
 
-	local scratchPath = vim.fs.joinpath(vim.fn.stdpath("data"), FOLDER_NAME)
 	local projectPath = findProjectFolder(vim.fn.expand("%:p"))
-	if projectPath == "." then
-		projectPath = vim.fn.getcwd(0)
-	end
-	local projectName = projectPath and string.gsub(projectPath, "/", "__")
-	if not projectName then
+	if not projectPath then
 		error("error opening scratch file: project not found")
 	end
+	local projectName = string.gsub(projectPath, "/", "__")
 
-	if not vim.uv.fs_stat(scratchPath) then
-		vim.fn.mkdir(scratchPath)
+	if not vim.uv.fs_stat(SCRATCH_DATA_PATH) then
+		vim.fn.mkdir(SCRATCH_DATA_PATH)
 	end
 
-	local path = vim.fs.joinpath(scratchPath, projectName .. ".md")
+	local path = vim.fs.joinpath(SCRATCH_DATA_PATH, projectName .. ".md")
 	openScratch({ path = path, auto_save = true })
 end, { desc = "Open scratch file for current project" })
