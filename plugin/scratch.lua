@@ -68,7 +68,7 @@ end
 
 FOLDER_NAME = "myscratch"
 
-vim.keymap.set("n", "<leader>xt", function()
+vim.api.nvim_create_user_command("Scratch", function()
 	-- FIX: verificare che funzioni anche su altri OS (come windows)
 
 	local scratchPath = vim.fs.joinpath(vim.fn.stdpath("data"), FOLDER_NAME)
