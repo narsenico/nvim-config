@@ -164,6 +164,7 @@ vim.keymap.set(
 )
 vim.keymap.set("n", "<leader>xxf", openFile, { desc = "Open file" })
 vim.keymap.set("n", "<leader>xxd", openFileDirectory, { desc = "Open directory" })
+vim.keymap.set("n", "<leader>xt", "<CMD>Scratch<CR>", { desc = "Open scratch file for current project" })
 
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "LSP Definition" })
 vim.keymap.set("n", "gI", vim.lsp.buf.implementation, { desc = "LSP Implementation" })
