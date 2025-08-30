@@ -145,6 +145,7 @@ vim.keymap.set("n", "<leader>fb", "<CMD>FzfLua buffers<CR>", { desc = "Find buff
 vim.keymap.set("n", "<leader>fc", "<CMD>FzfLua changes<CR>", { desc = "Find changes" })
 vim.keymap.set("n", "<leader>ft", "<CMD>FzfLua live_grep<CR>", { desc = "Find text (grep)" })
 vim.keymap.set("n", "<leader>fC", showConfigFiles, { desc = "Find config files" })
+vim.keymap.set("n", "<leader>fh", "<CMD>FzfLua helptags<CR>", { desc = "Find help tags" })
 vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>", { desc = "Explorer" })
 vim.keymap.set(
 	"n",
