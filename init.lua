@@ -36,6 +36,14 @@ local copyFileDirectoryToSystemClipboard = function()
 	vim.fn.setreg("+", path)
 end
 
+local openFile = function()
+	vim.ui.open(vim.fn.expand("%:p"))
+end
+
+local openFileDirectory = function()
+	vim.ui.open(vim.fn.expand("%:p:h"))
+end
+
 local removeUnusedImports = function()
 	vim.lsp.buf.code_action({
 		context = {
@@ -153,9 +161,8 @@ vim.keymap.set(
 	copyFileDirectoryToSystemClipboard,
 	{ desc = "Copy file parent directory to system clipboard" }
 )
--- FIXME: start funziona solo windows!!!
-vim.keymap.set("n", "<leader>xxf", "<cmd>execute '!start %'<cr>", { desc = "Open file" })
-vim.keymap.set("n", "<leader>xxd", "<cmd>execute '!start %:p:h'<cr>", { desc = "Open directory" })
+vim.keymap.set("n", "<leader>xxf", openFile, { desc = "Open file" })
+vim.keymap.set("n", "<leader>xxd", openFileDirectory, { desc = "Open directory" })
 
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "LSP Definition" })
 vim.keymap.set("n", "gI", vim.lsp.buf.implementation, { desc = "LSP Implementation" })
