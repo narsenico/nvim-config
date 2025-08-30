@@ -65,8 +65,13 @@ end
 FOLDER_NAME = "myscratch"
 
 vim.keymap.set("n", "<leader>xt", function()
+	-- FIX: verificare che funzioni anche su altri OS (come windows)
+
 	local scratchPath = vim.fs.joinpath(vim.fn.stdpath("data"), FOLDER_NAME)
 	local projectPath = findProjectFolder(vim.fn.expand("%:p"))
+	if projectPath == "." then
+		projectPath = vim.fn.getcwd(0)
+	end
 	local projectName = (projectPath and string.gsub(projectPath, "/", "__") or "project")
 
 	if not vim.uv.fs_stat(scratchPath) then
