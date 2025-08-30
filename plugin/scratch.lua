@@ -76,7 +76,10 @@ vim.keymap.set("n", "<leader>xt", function()
 	if projectPath == "." then
 		projectPath = vim.fn.getcwd(0)
 	end
-	local projectName = (projectPath and string.gsub(projectPath, "/", "__") or "project")
+	local projectName = projectPath and string.gsub(projectPath, "/", "__")
+	if not projectName then
+		error("error opening scratch file: project not found")
+	end
 
 	if not vim.uv.fs_stat(scratchPath) then
 		vim.fn.mkdir(scratchPath)
