@@ -52,8 +52,9 @@ local openScratch = function(opts)
 end
 
 local findProjectFolder = function(path)
-	local res = vim.fs.find({ ".git", "node_modules" }, {
-		type = "directory",
+	-- FIX: definire altri file/directory che possono indicative di un progetto
+
+	local res = vim.fs.find({ ".git", "node_modules", "Cargo.toml" }, {
 		path = path,
 		upward = true,
 	})
