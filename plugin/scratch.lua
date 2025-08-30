@@ -34,9 +34,12 @@ local openScratch = function(opts)
 
 	vim.keymap.set("n", "<ESC><ESC>", function()
 		if opts.auto_save then
-			vim.api.nvim_buf_call(buf, function()
-				vim.cmd("w")
-			end)
+			local buf_modified = vim.api.nvim_buf_get_option(buf, "modified")
+			if buf_modified then
+				vim.api.nvim_buf_call(buf, function()
+					vim.cmd("w")
+				end)
+			end
 		end
 		if vim.api.nvim_win_is_valid(win) then
 			vim.api.nvim_win_close(win, false)
