@@ -289,3 +289,8 @@ require("kanagawa").setup({
 
 -- vim.cmd("colorscheme duskfox")
 vim.cmd("colorscheme kanagawa")
+
+require("lua.ft").setup({
+	ft_file_path = vim.fn.stdpath("data") .. "/ft.json",
+	auto_save = true,
+})
