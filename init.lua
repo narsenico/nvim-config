@@ -16,8 +16,10 @@ end
 local toggleLockCursorOnScreenMiddle = function()
 	if vim.o.scrolloff == 999 then
 		vim.o.scrolloff = DEFAULT_SCROLLOFF
+		vim.o.cursorline = false
 	else
 		vim.o.scrolloff = 999
+		vim.o.cursorline = true
 	end
 	print("scrolloff=" .. vim.o.scrolloff)
 end
