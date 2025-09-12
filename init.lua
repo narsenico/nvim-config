@@ -5,6 +5,11 @@ local showConfigFiles = function()
 	require("fzf-lua").files({ cwd = cwd, winopts = { title = "Config" } })
 end
 
+local showCurrentFolder = function()
+	local cwd = vim.fn.expand("%:p:h")
+	require("fzf-lua").files({ cwd = cwd, winopts = { title = "Current folder" } })
+end
+
 local loadSession = function()
 	require("persistence").load()
 end
@@ -142,7 +147,8 @@ vim.keymap.set("n", "<leader>gb", "<CMD>FzfLua git_blame<CR>", { desc = "Git Bla
 vim.keymap.set("n", "<S-h>", "<CMD>bprevious<CR>", { desc = "Previous Buffer" })
 vim.keymap.set("n", "<S-l>", "<CMD>bnext<CR>", { desc = "Next Buffer" })
 vim.keymap.set("n", "<leader>ff", "<CMD>FzfLua files<CR>", { desc = "Find files" })
-vim.keymap.set("n", "<leader><leader>", "<CMD>FzfLua files<CR>", { desc = "Find files" })
+-- vim.keymap.set("n", "<leader><leader>", "<CMD>FzfLua files<CR>", { desc = "Find files" })
+vim.keymap.set("n", "<leader><leader>", showCurrentFolder, { desc = "Find files" })
 vim.keymap.set("n", "<leader>fb", "<CMD>FzfLua buffers<CR>", { desc = "Find buffers" })
 vim.keymap.set("n", "<leader>fc", "<CMD>FzfLua changes<CR>", { desc = "Find changes" })
 vim.keymap.set("n", "<leader>ft", "<CMD>FzfLua live_grep<CR>", { desc = "Find text (grep)" })
