@@ -139,13 +139,16 @@ local setup_commands = function(pattern, file_path, auto_save)
 	end, { desc = "Add custom filetype", nargs = "*" })
 
 	-- TODO: creare comando per rimuovere un pattern :FtDel [pattern]
-	-- TODO: creare comando per elencare i pattern :FtList
 
 	vim.api.nvim_create_user_command("FtSave", function()
 		-- if vim.fn.confirm("Save changes?", "&Yes\n&No") == 1 then
 		save()
 		-- end
 	end, { desc = "Save custom filetypes" })
+
+	vim.api.nvim_create_user_command("FtList", function()
+		print(vim.inspect(pattern))
+	end, { desc = "List custom filetypes" })
 end
 
 local M = {}
