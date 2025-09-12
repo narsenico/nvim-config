@@ -90,6 +90,7 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects" },
 	{ src = "https://github.com/j-hui/fidget.nvim" },
 	{ src = "https://github.com/chentoast/marks.nvim" },
+	{ src = "https://github.com/rachartier/tiny-inline-diagnostic.nvim" },
 	-- colorscheme
 	{ src = "https://github.com/EdenEast/nightfox.nvim" },
 	{ src = "https://github.com/rebelot/kanagawa.nvim" },
@@ -111,7 +112,7 @@ vim.opt.scrolloff = DEFAULT_SCROLLOFF
 
 vim.g.mapleader = " "
 
-vim.diagnostic.config({ virtual_lines = true })
+vim.diagnostic.config({ virtual_lines = false, virtual_text = false }) -- tiny-inline-diagnostic takes care of diagnostic virtual text
 
 vim.keymap.set("n", "<leader>so", "<CMD>update<CR> <CMD>source<CR>", { desc = "Source config" })
 vim.keymap.set("n", "<leader>sl", loadSession, { desc = "Load session" })
@@ -286,6 +287,8 @@ require("marks").setup({
 	refresh_interval = 250,
 })
 require("persistence").setup()
+-- show diagnostic virtual text only on line under the cursor
+require("tiny-inline-diagnostic").setup()
 require("kanagawa").setup({
 	-- TODO: this is a todo
 	-- INFO: this is an info
