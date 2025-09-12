@@ -89,6 +89,7 @@ vim.pack.add({
 	{ src = "https://github.com/folke/persistence.nvim" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects" },
 	{ src = "https://github.com/j-hui/fidget.nvim" },
+	{ src = "https://github.com/chentoast/marks.nvim" },
 	-- colorscheme
 	{ src = "https://github.com/EdenEast/nightfox.nvim" },
 	{ src = "https://github.com/rebelot/kanagawa.nvim" },
@@ -281,6 +282,9 @@ require("conform").setup({
 	},
 })
 require("nvim-autopairs").setup()
+require("marks").setup({
+	refresh_interval = 250,
+})
 require("persistence").setup()
 require("kanagawa").setup({
 	-- TODO: this is a todo
