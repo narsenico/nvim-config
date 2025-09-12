@@ -30,7 +30,7 @@ local toggleLockCursorOnScreenMiddle = function()
 end
 
 local format = function()
-	require("conform").format({ async = true })
+	require("conform").format({ async = true, lsp_format = "fallback" })
 end
 
 local copyFilePathToSystemClipboard = function()
