@@ -79,7 +79,7 @@ vim.api.nvim_create_user_command("Scratch", function()
 	if not projectPath then
 		error("error opening scratch file: project not found")
 	end
-	local projectName = string.gsub(projectPath, "/", "__")
+	local projectName = string.gsub(projectPath, "[\\/:]", "__")
 
 	if not vim.uv.fs_stat(SCRATCH_DATA_PATH) then
 		vim.fn.mkdir(SCRATCH_DATA_PATH)
