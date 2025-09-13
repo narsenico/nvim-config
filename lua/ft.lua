@@ -172,9 +172,20 @@ local setup_commands = function(pattern, file_path, auto_save)
 		print(vim.inspect(pattern))
 	end, { desc = "List custom filetypes" })
 
-	vim.api.nvim_create_user_command("FtDel", function(args)
-		-- TODO: se args allora 1. eliminare il pattern specificato oppure 2. eliminare il pattern del file corrente
+	vim.api.nvim_create_user_command("FtDel", function()
 		local key = select_pattern(pattern, "Select filetype pattern to delete (need restart):")
+		if not key then
+			return
+		end
+
+		pattern[key] = nil
+		if auto_save then
+			save()
+		end
+	end, { desc = "Delete custom filetype" })
+
+	vim.api.nvim_create_user_command("FtDelCur", function(args)
+		local key = get_pattern_from_current_buffer()
 		if not key then
 			return
 		end
