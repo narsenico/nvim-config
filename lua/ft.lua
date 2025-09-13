@@ -87,7 +87,7 @@ end
 ---@param fargs       table
 ---@return string|nil filetype pattern
 ---@return string|nil filetype
-local parse_user_command_fargs = function(fargs)
+local parse_ft_add_fargs = function(fargs)
 	local arg1 = trim_or_nil(fargs[1])
 	local arg2 = trim_or_nil(fargs[2])
 
@@ -148,7 +148,7 @@ local setup_commands = function(pattern, file_path, auto_save)
 	end
 
 	vim.api.nvim_create_user_command("FtAdd", function(args)
-		local key, filetype = parse_user_command_fargs(args.fargs)
+		local key, filetype = parse_ft_add_fargs(args.fargs)
 
 		if filetype then
 			key = key or get_pattern_from_current_buffer()
