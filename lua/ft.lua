@@ -135,6 +135,18 @@ local select_pattern = function(pattern, title)
 	return indexed_pattern[selection][1]
 end
 
+---@param pattern     table
+---@param title       string
+local print_pattern = function(pattern, title)
+	local indexed_pattern = to_indexed_table(pattern)
+	local lines = { title }
+	for i, e in ipairs(indexed_pattern) do
+		table.insert(lines, i .. ". " .. e[1] .. " = " .. e[2])
+	end
+
+	print(table.concat(lines, "\n"))
+end
+
 ---@param pattern    table
 ---@param file_path  string
 ---@param auto_save? boolean
@@ -169,7 +181,7 @@ local setup_commands = function(pattern, file_path, auto_save)
 	end, { desc = "Save custom filetypes" })
 
 	vim.api.nvim_create_user_command("FtList", function()
-		print(vim.inspect(pattern))
+		print_pattern(pattern, "Filtype pattern:")
 	end, { desc = "List custom filetypes" })
 
 	vim.api.nvim_create_user_command("FtDel", function()
@@ -184,7 +196,7 @@ local setup_commands = function(pattern, file_path, auto_save)
 		end
 	end, { desc = "Delete custom filetype" })
 
-	vim.api.nvim_create_user_command("FtDelCur", function(args)
+	vim.api.nvim_create_user_command("FtDelCur", function()
 		local key = get_pattern_from_current_buffer()
 		if not key then
 			return
