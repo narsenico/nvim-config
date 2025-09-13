@@ -81,7 +81,6 @@ vim.pack.add({
 	{ src = "https://github.com/Saghen/blink.cmp", version = "v1.6.0" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
 	{ src = "https://github.com/kdheepak/lazygit.nvim" },
-	{ src = "https://github.com/akinsho/bufferline.nvim" },
 	{ src = "https://github.com/ibhagwan/fzf-lua" },
 	{ src = "https://github.com/nvim-lualine/lualine.nvim" },
 	{ src = "https://github.com/windwp/nvim-autopairs" },
@@ -138,9 +137,6 @@ vim.keymap.set({ "n", "v", "x" }, "<leader>y", '"+y<CR>', { desc = "Yank on clip
 vim.keymap.set({ "n", "v", "x" }, "<leader>d", '"+d<CR>', { desc = "Cut on clipboard" })
 vim.keymap.set("n", "<leader>bb", "<CMD>b#<CR>", { desc = "Previously opened buffer" })
 vim.keymap.set("n", "<leader>bd", "<CMD>bdelete<CR>", { desc = "Close current buffer" })
-vim.keymap.set("n", "<leader>bo", "<CMD>BufferLineCloseOthers<CR>", { desc = "Close other buffers" })
-vim.keymap.set("n", "<leader>br", "<CMD>BufferLineCloseRight<CR>", { desc = "Close buffers at right" })
-vim.keymap.set("n", "<leader>bl", "<CMD>BufferLineCloseLeft<CR>", { desc = "Close buffers at left" })
 vim.keymap.set("n", "<C-TAB>", "<CMD>b#<CR>", { desc = "Previously opened buffer" })
 vim.keymap.set("n", "<leader>gg", "<CMD>LazyGit<CR>", { desc = "Lazygit" })
 vim.keymap.set("n", "<leader>gc", "<CMD>FzfLua git_commits<CR>", { desc = "Git Commits" })
@@ -257,7 +253,6 @@ require("blink.cmp").setup({
 	},
 	fuzzy = { implementation = "lua" },
 })
-require("bufferline").setup()
 require("fzf-lua").setup()
 require("lualine").setup({
 	options = {
