@@ -154,7 +154,7 @@ local setup_commands = function(pattern, file_path, auto_save)
 			key = key or get_pattern_from_current_buffer()
 			vim.cmd("set filetype=" .. filetype)
 		end
-		assert(key and filetype, "Ft command requires at least 1 argument (:FT [pattern] <filetype>)")
+		assert(key and filetype, "FtAdd command requires at least 1 argument (:FtAdd [pattern] <filetype>)")
 
 		pattern = vim.tbl_extend("keep", pattern, { [key] = filetype })
 		add_pattern(pattern)
