@@ -109,6 +109,32 @@ local get_pattern_from_current_buffer = function()
 	return ".*." .. ext
 end
 
+local to_indexed_table = function(data)
+	local t = {}
+	for k, v in next, data do
+		table.insert(t, { k, v })
+	end
+	return t
+end
+
+---@param pattern     table
+---@param title       string
+---@return string|nil pattern key selected or nill if no selection occurs
+local select_pattern = function(pattern, title)
+	local indexed_pattern = to_indexed_table(pattern)
+	local lines = { title }
+	for i, e in ipairs(indexed_pattern) do
+		table.insert(lines, i .. ". " .. e[1] .. " = " .. e[2])
+	end
+
+	local selection = vim.fn.inputlist(lines)
+	if selection == 0 then
+		return nil
+	end
+
+	return indexed_pattern[selection][1]
+end
+
 ---@param pattern    table
 ---@param file_path  string
 ---@param auto_save? boolean
@@ -138,17 +164,26 @@ local setup_commands = function(pattern, file_path, auto_save)
 		end
 	end, { desc = "Add custom filetype", nargs = "*" })
 
-	-- TODO: creare comando per rimuovere un pattern :FtDel [pattern]
-
 	vim.api.nvim_create_user_command("FtSave", function()
-		-- if vim.fn.confirm("Save changes?", "&Yes\n&No") == 1 then
 		save()
-		-- end
 	end, { desc = "Save custom filetypes" })
 
 	vim.api.nvim_create_user_command("FtList", function()
 		print(vim.inspect(pattern))
 	end, { desc = "List custom filetypes" })
+
+	vim.api.nvim_create_user_command("FtDel", function(args)
+		-- TODO: se args allora 1. eliminare il pattern specificato oppure 2. eliminare il pattern del file corrente
+		local key = select_pattern(pattern, "Select filetype pattern to delete (need restart):")
+		if not key then
+			return
+		end
+
+		pattern[key] = nil
+		if auto_save then
+			save()
+		end
+	end, { desc = "Delete custom filetype" })
 end
 
 local M = {}
