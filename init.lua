@@ -90,6 +90,11 @@ vim.pack.add({
 	{ src = "https://github.com/j-hui/fidget.nvim" },
 	{ src = "https://github.com/chentoast/marks.nvim" },
 	{ src = "https://github.com/rachartier/tiny-inline-diagnostic.nvim" },
+	-- neotest
+	{ src = "https://github.com/nvim-lua/plenary.nvim.git" },
+	{ src = "https://github.com/nvim-neotest/nvim-nio.git" },
+	{ src = "https://github.com/nvim-neotest/neotest.git" },
+	{ src = "https://github.com/adrigzr/neotest-mocha.git" },
 	-- colorscheme
 	{ src = "https://github.com/EdenEast/nightfox.nvim" },
 	{ src = "https://github.com/rebelot/kanagawa.nvim" },
@@ -303,4 +308,34 @@ vim.cmd("colorscheme kanagawa-dragon")
 require("ft").setup({
 	ft_file_path = vim.fn.stdpath("data") .. "/ft.json",
 	auto_save = true,
+})
+
+require("neotest").setup({
+	adapters = {
+		require("neotest-mocha")({
+			command = "npm test -- ",
+			command_args = function(context)
+				-- The context contains:
+				--   results_path: The file that json results are written to
+				--   test_name: The exact name of the test; is empty for `file` and `dir` position tests.
+				--   test_name_pattern: The generated pattern for the test
+				--   path: The path to the test file
+				--
+				-- It should return a string array of arguments
+				--
+				-- Not specifying 'command_args' will use the defaults below
+				return {
+					"--full-trace",
+					"--reporter=json",
+					"--reporter-options=output=" .. context.results_path,
+					"--grep=" .. context.test_name_pattern,
+					context.path,
+				}
+			end,
+			env = { CI = true },
+			cwd = function(path)
+				return vim.fn.getcwd()
+			end,
+		}),
+	},
 })
